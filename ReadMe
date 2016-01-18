@@ -1,0 +1,25 @@
+
+/*
+*
+*                Tema 1 - Paradigme de Programare
+*                      Constructia arborilor de decizie
+*                   Lavinia Tache - 322 CA
+*
+*/
+
+
+	Scopul temei este implementarea algoritmului ID3 de creare a unui arbore de decizie. Reprezentarea interna a arborelui este sub forma unei liste de perechi, prima valoare din pereche reprezentand atributul, urmatoarea fiind valoarea nodului
+in care se ajunge din acest atribut.
+De asemenea, reprezentarea interna respecta cateva structuri:
+  -> o frunza este un nod care nu are copii si este caracterizata de o clasa
+  -> o ramura este caracterizata de o valoare ( una dintre valorile atributului verificat
+in nodul parinte).
+	Arborii de decizie reprezinta o metoda de clasificare si invatare prin exemple.
+Un arbore de decizie este un arbore in care nodurile reprezinta atribute care separa exemplele (nodurile reprezinta decizii), ramurile care pleaca dintr-un nod corespund valorilor atributului, iar frunzele reprezinta clasele.  Atunci cand se da un exemplu nou pentru care trebuie sa determinam clasa, este suficient sa se parcurga arborele pornind de la radacina si la fiecare nod intalnit sa se mearga pe ramura corespunzatoare. 	Avand in vedere acest fapt primim ca date de intrare o lista de exemple, o lista de 
+atribute si o lista care reprezinta valorile claselor. Constructia unui arbore de decizie se face in etape, la fiecare etapa alegandu-se un atribut care separa exemplele si reiterand pentru fiecare din sub-multimile de exemple care rezulta din separare.
+Pentru ca arborele de decizie construit sa fie cat mai eficient dorim ca inaltimea acestuia sa fie minim. Conditia poate sa fie indeplinita prin calcularea castigului informational. Castigul informational se calculeaza folosind calculul entropiei, iar implementarile cele doua functii presupun implemntare unor functii auxiliare care sa calculeze : numarul de aparitii al unui
+element in lista de exemple, valoarea procentului (numarul de aparitii ale clasei raportat la lungimea listei de exemple). 
+	Castigul informational este diferenta dintre valoarea entropiei si suma peste atribute in multimea Sv (Sv = listele din exemples care contin doar atributul v).
+Functiile folosite pentru implementarea pas cu pas sunt comentate in cod.
+	Dupa calcularea castigului informational arborele va avea structura optima, iar constructia se face tinand de cont de algoritmul recursiv:
+    daca exemplele sunt toate in aceeasi clasa, se intoarce o frunza cu clasa respectiva altfel, se alege din lista de atribute atributul A cu castigul informational maxim pe multimea de exemple data. Se va scoate atributul A din lista de atribute, iar exemplele se impart in functie de valorile lor pentru atributul A.Pentru fiecare valoare v a atributului A se apeleaza recursiv functia de constructie.
